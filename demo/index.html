@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>Slider demo</title>
+
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+
+    <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+    <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../cvn-slider.html">
+
+    <custom-style>
+      <style is="custom-style" include="demo-pages-shared-styles">
+      </style>
+    </custom-style>
+  </head>
+  <body>
+    <div class="vertical-section-container centered">
+      <h3>Basic Slider demo</h3>
+      <demo-snippet>
+        <template>
+          <cvn-slider mode-auto="true" current-image="1" number-of-images="6" slide-time="2s" image-folder="images" image-name="image" image-extension="jpg" image-counter-format="00"></cvn-slider>
+        </template>
+      </demo-snippet>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,91 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="slider-styles.html">
+
+
+<dom-module id="cvn-slider">
+  <template>    
+    <style include="slider-styles">
+      :host {
+          display: block;
+      }
+    </style>
+    <div class="slider-container">
+        <div class="slider-images-container">
+            <img class="slider-current" src="" alt="">
+        </div>
+        <div class="slider-controls-container">
+            <div class="slider-controls">
+                <div class="slider-control-left">&lt;</div>
+                <div class="slider-control-right">&gt;</div>
+            </div>
+        </div>
+    </div>
+  </template>
+
+  <script src="slider-functions.js"></script>
+  <script>
+    class CvnSlider extends Polymer.Element {
+        static get is() { return 'cvn-slider'; }
+        static get properties() {
+            return {
+                modeAuto: {
+                    type: String,
+                    value: "false"
+                },
+                slideTime: {
+                    type: String,
+                    value: "2s"
+                },
+                imageExtension: {
+                    type: String,
+                    value: "jpg"
+                },
+                imageCounterFormat: {
+                    type: String,
+                    value: "00"
+                },
+                imageName: {
+                    type: String,
+                    value: "image"
+                },
+                imageFolder: {
+                    type: String,
+                    value: "images"
+                },
+                numberOfImages: {
+                    type: Number,
+                    value: 10
+                },
+                currentImage: {
+                    type: Number,
+                    value: 1
+                }
+            };
+        }
+
+        constructor() {
+            super();
+        }
+
+        ready() {
+            super.ready();
+            
+            const data = {
+                modeAuto: this.modeAuto === "true" ? true : false,
+                slideTime: this.slideTime,
+                imageExtension: this.imageExtension,
+                imageCounterFormat: this.imageCounterFormat,
+                imageName: this.imageName,
+                imageFolder: this.imageFolder,
+                numberOfImages: this.numberOfImages,
+                currentImage: this.currentImage
+            }
+
+            let slider = new Slider(data, this.shadowRoot.querySelector(".slider-container"));
+            slider.initSlider();
+        }
+    }
+
+    window.customElements.define(CvnSlider.is, CvnSlider);
+  </script>
+</dom-module>
